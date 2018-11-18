@@ -1,31 +1,32 @@
+<?php
 class Route
 {
 	static function start()
 	{
-		// контроллер и действие по умолчанию
+		// РєРѕРЅС‚СЂРѕР»Р»РµСЂ Рё РґРµР№СЃС‚РІРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 		$controller_name = 'Main';
 		$action_name = 'index';
 		
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
 
-		// получаем имя контроллера
+		// РїРѕР»СѓС‡Р°РµРј РёРјСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
 		if ( !empty($routes[1]) )
 		{	
 			$controller_name = $routes[1];
 		}
 		
-		// получаем имя экшена
+		// РїРѕР»СѓС‡Р°РµРј РёРјСЏ СЌРєС€РµРЅР°
 		if ( !empty($routes[2]) )
 		{
 			$action_name = $routes[2];
 		}
 
-		// добавляем префиксы
+		// РґРѕР±Р°РІР»СЏРµРј РїСЂРµС„РёРєСЃС‹
 		$model_name = 'Model_'.$controller_name;
 		$controller_name = 'Controller_'.$controller_name;
 		$action_name = 'action_'.$action_name;
 
-		// подцепляем файл с классом модели (файла модели может и не быть)
+		// РїРѕРґС†РµРїР»СЏРµРј С„Р°Р№Р» СЃ РєР»Р°СЃСЃРѕРј РјРѕРґРµР»Рё (С„Р°Р№Р»Р° РјРѕРґРµР»Рё РјРѕР¶РµС‚ Рё РЅРµ Р±С‹С‚СЊ)
 
 		$model_file = strtolower($model_name).'.php';
 		$model_path = "application/models/".$model_file;
@@ -34,7 +35,7 @@ class Route
 			include "application/models/".$model_file;
 		}
 
-		// подцепляем файл с классом контроллера
+		// РїРѕРґС†РµРїР»СЏРµРј С„Р°Р№Р» СЃ РєР»Р°СЃСЃРѕРј РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
 		$controller_file = strtolower($controller_name).'.php';
 		$controller_path = "application/controllers/".$controller_file;
 		if(file_exists($controller_path))
@@ -44,24 +45,24 @@ class Route
 		else
 		{
 			/*
-			правильно было бы кинуть здесь исключение,
-			но для упрощения сразу сделаем редирект на страницу 404
+			РїСЂР°РІРёР»СЊРЅРѕ Р±С‹Р»Рѕ Р±С‹ РєРёРЅСѓС‚СЊ Р·РґРµСЃСЊ РёСЃРєР»СЋС‡РµРЅРёРµ,
+			РЅРѕ РґР»СЏ СѓРїСЂРѕС‰РµРЅРёСЏ СЃСЂР°Р·Сѓ СЃРґРµР»Р°РµРј СЂРµРґРёСЂРµРєС‚ РЅР° СЃС‚СЂР°РЅРёС†Сѓ 404
 			*/
 			Route::ErrorPage404();
 		}
 		
-		// создаем контроллер
+		// СЃРѕР·РґР°РµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂ
 		$controller = new $controller_name;
 		$action = $action_name;
 		
 		if(method_exists($controller, $action))
 		{
-			// вызываем действие контроллера
+			// РІС‹Р·С‹РІР°РµРј РґРµР№СЃС‚РІРёРµ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
 			$controller->$action();
 		}
 		else
 		{
-			// здесь также разумнее было бы кинуть исключение
+			// Р·РґРµСЃСЊ С‚Р°РєР¶Рµ СЂР°Р·СѓРјРЅРµРµ Р±С‹Р»Рѕ Р±С‹ РєРёРЅСѓС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРµ
 			Route::ErrorPage404();
 		}
 	
