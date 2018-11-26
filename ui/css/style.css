@@ -277,7 +277,7 @@ xgallery
   width: 100%;
   border: 3px solid white;
   max-width: 420px;
-  max-height: 230px;
+  max-height: 300px;
   margin: auto;
   object-fit: cover;
 }
@@ -287,6 +287,7 @@ xgallery
   width: 100%;
   color: white;
   background: #C10130;
+  border-radius: 50px;
 }
 
 .cd-gallery .productname{
@@ -302,22 +303,25 @@ xgallery
   text-align: center;
 }
 .cd-gallery .price{
-  background: rgb(20, 94, 20);
-  color: white;
+  background: #FDAF17;
+  color: black;
   padding: 15px;
   text-align: center;
   border: 3px solid white;
+  font-weight: bold;
+  border-radius: 10px;
 }
 .cd-gallery a:hover{
   text-decoration: none;
   color: white;
 }
 .cd-gallery #buy:hover{
-  background: rgb(5, 236, 17);
+  background: rgb(255, 0, 0);
 }
 
 .cd-gallery #info:hover{
-  background: rgb(39, 10, 66);
+  /* background: rgb(39, 10, 66); */
+  background: rgb(104, 104, 104);
 }
 
 .cd-gallery #info{
@@ -325,6 +329,7 @@ xgallery
   padding: 15px;
   width: 100%;
   background: rgb(199, 199, 199);
+  border-radius: 50px;
 }
 .cd-gallery .linkbuttons{
   text-align: center;
@@ -355,9 +360,9 @@ xgallery
   .cd-gallery {
     padding: 50px 2%;
     float: right;
-    -webkit-transition: width 0.3s;
-    -moz-transition: width 0.3s;
-    transition: width 0.3s;
+    -webkit-transition: width 0.4s;
+    -moz-transition: width 0.4s;
+    transition: width 0.4s;
   }
   .cd-gallery li {
     width: 23%;

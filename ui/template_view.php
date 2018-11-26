@@ -22,7 +22,7 @@
 					<a href="/">Главная</a>
 					<a href="#">Корзина</a>
                     <a href="about">О нас</a>
-					<a href="#">Регистрация</a>
+					<a href="reg">Регистрация</a>
 					<a href="auth">Вход</a>
 				</nav>
 			</div>

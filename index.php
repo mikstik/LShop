@@ -41,4 +41,18 @@ $f3->route('GET /auth',
 	}
 );
 
+$f3->route('GET /log',
+	function($f3) use($db){
+		$f3->set('products', $db->exec('SELECT * FROM catalog'));
+	}
+);
+
+$f3->route('GET /reg',
+	function($f3) {
+		$f3->set('reg','reg_view.php');
+		echo View::instance()->render('template_view.php');
+		echo View::instance()->render('reg_view.php');
+	}
+);
+
 $f3->run();
