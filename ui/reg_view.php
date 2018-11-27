@@ -9,6 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="ui/css/style.css">
 	<link rel="stylesheet" type="text/css" href="ui/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="ui/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="ui/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="ui/css/style.css"> <!-- Resource style -->
 </head>
 <body>
 	<div class="limiter">
@@ -20,7 +23,7 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="/registration">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">E-mail</span>
 						<input class="input100" type="text" name="username" placeholder="Введите почту">
@@ -29,13 +32,13 @@
 
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Имя</span>
-						<input class="input100" type="text" name="username" placeholder="Ваше имя">
+						<input class="input100" type="text" name="name" placeholder="Ваше имя">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Пароль</span>
-						<input class="input100" type="password" name="pass" placeholder="Введите пароль">
+						<input class="input100" type="password" name="password" placeholder="Введите пароль">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -45,14 +48,8 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="flex-sb-m w-full p-b-30">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						</div>
-					</div>
-
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Зарегистрироваться
 						</button>
 					</div>

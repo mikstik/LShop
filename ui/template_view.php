@@ -20,7 +20,7 @@
 				<input type="checkbox" name="" id="open">
 				<nav>
 					<a href="/">Главная</a>
-					<a href="#">Корзина</a>
+					<a href="cart">Корзина</a>
                     <a href="about">О нас</a>
 					<a href="reg">Регистрация</a>
 					<a href="auth">Вход</a>
@@ -29,17 +29,18 @@
 		</div>
     </header>
     
-<section class="clearfix">
+   <section class="clearfix">
 		<div class="container">
 			<div class="section-left">
 				
 			</div>
 		</div>
 	</section>
-	<div class="content">
-						
+	<div>
+	<?php echo $this->render(Base::instance()->get('content')) ?>
+	<?php echo $this->render(Base::instance()->get('footer')) ?>
 	</div>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="ui/js/main.js"></script>
+	<script src="ui/js/main.js"></script>	
 </body>
 </html>

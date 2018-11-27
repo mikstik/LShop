@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="stock">
-        <p><img src="ui/img/mainpicture.jpg" class="discount"></p>
+        <p><img src="ui/img/mainpicture.jpg" class="discount" id="discountpicture"></p>
     </div>
 	<header class="cd-header">
 		<h1>Наши продукты:</h1>
@@ -21,41 +21,20 @@
 					<li class="placeholder"> 
 						<a data-type="all" href="#0">Всё</a> <!-- selected option on mobile -->
 					</li> 
-					<li class="filter"><a class="selected" href="#0" data-type="all">Всё</a></li>
-					<li class="filter" data-filter=".color-1"><a href="#0" data-type="color-1">Intel</a></li>
-					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-2">AMD</a></li>
+					<li class="filter"><a class="" href="/" data-type="all" id="selectCategories">Каталог</a></li>
+					<li class="filter" data-filter=".color-1"><a href="/laptop" data-type="color-1" id="selectLaptops" onclick="selectedLaptops()">Ноутбуки</a></li>
+					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-2" id="selectSmartphones">Смартфоны</a></li>
+					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-3" id="selectHeadset">Гарнитура</a></li>
+					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-4" id="selectMouse">Мыши</a></li>
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
-
 		<section class="cd-gallery">
 			<ul>
-
-				<?php foreach($products as $item) : ?>
-				<li class="mix color-1 check1 radio1 option1">
-					<div class="linkbuttons">
-						<h1 class="productname"><?= $item['type_product']?></h1>
-						<h1 class="productname"><?= $item['name'] ?></h1>
-						<img src="<?= $item['image'] ?>" alt="Image 1">
-						<br>
-						<h2 class="shortdescription"><?= $item['shortdescription'] ?></h2>
-						<h2 id="info"><a href=" <?= $item['id']?> ">Подробнее</a></h2>
-						<h2 id="buy"><a href="<?= $item['id']?>">Купить</a></h2>
-						<h3 class="price">Цена: <?= $item['price']?> руб.</h3>
-					</div>
-				</li>
-				<?php endforeach; ?>	
-
+				<?php echo $this->render(Base::instance()->get('categories')) ?>
 				<!-- <li class="mix color-2 check2 radio2 option2"><img src="ui/img/xiaomi.png" alt="Image 2"></li>
 				<li class="mix color-1 check3 radio3 option1"><img src="ui/img/xiaomi.png" alt="Image 3"></li>
 				<li class="mix color-1 check3 radio2 option4"><img src="ui/img/xiaomi.png" alt="Image 4"></li>
-				<li class="mix color-1 check1 radio3 option2"><img src="ui/img/xiaomi.png" alt="Image 5"></li>
-				<li class="mix color-2 check2 radio3 option3"><img src="ui/img/xiaomi.png" alt="Image 6"></li>
-				<li class="mix color-2 check2 radio2 option1"><img src="ui/img/xiaomi.png" alt="Image 7"></li>
-				<li class="mix color-1 check1 radio3 option4"><img src="ui/img/xiaomi.png" alt="Image 8"></li>
-				<li class="mix color-2 check1 radio2 option3"><img src="ui/img/xiaomi.png" alt="Image 9"></li>
-				<li class="mix color-1 check3 radio2 option4"><img src="ui/img/xiaomi.png" alt="Image 10"></li>
-				<li class="mix color-1 check3 radio3 option2"><img src="ui/img/xiaomi.png" alt="Image 11"></li>
 				<li class="mix color-2 check1 radio3 option1"><img src="ui/img/xiaomi.png" alt="Image 12"></li> -->
 				<li class="gap"></li>
 				<li class="gap"></li>

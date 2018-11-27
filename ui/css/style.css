@@ -250,6 +250,10 @@ xtab-filter
     /* reduce width when filter is visible */
     width: 80%;
   }
+  #discountpicture
+  {
+  margin-left: 10%; 
+  }
 }
 
 /* -------------------------------- 
@@ -257,6 +261,7 @@ xtab-filter
 xgallery 
 
 -------------------------------- */
+
 .cd-gallery {
   padding: 26px 5%;
   width: 100%;
@@ -276,10 +281,25 @@ xgallery
   display: block;
   width: 100%;
   border: 3px solid white;
-  max-width: 420px;
-  max-height: 300px;
+  max-width: 400px;
+  max-height: 380px;
   margin: auto;
   object-fit: cover;
+}
+
+#cart img{
+  display: block;
+  width: 100%;
+  border: 3px solid white;
+  max-width: 200px;
+  max-height: 200px;
+  margin: auto;
+  object-fit: cover;
+}
+
+#cards{
+  max-width: 1000px;
+  max-height: 600px;
 }
 .cd-gallery #buy{
   border: 3px solid white;
@@ -311,6 +331,39 @@ xgallery
   font-weight: bold;
   border-radius: 10px;
 }
+
+.cd-gallery .endprice{
+  background: rgb(145, 10, 10);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border: 3px solid white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+#deletecard{
+  background: rgb(223, 5, 5);
+  color: white;
+  padding: 4.5px;
+  text-align: center;
+  border: 2px solid black;
+  font-weight: bold;
+  width: 7%;
+  border-radius: 18px;
+  margin-left: 93%;
+  margin-bottom: -10%; 
+}
+
+.cd-gallery .getoffer{
+  background: rgb(6, 77, 6);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border: 3px solid white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
 .cd-gallery a:hover{
   text-decoration: none;
   color: white;
@@ -354,6 +407,11 @@ xgallery
   .cd-gallery li {
     width: 48%;
     margin-bottom: 2em;
+  }
+
+  #cards{
+    max-width: 1000px;
+    max-height: 600px;
   }
 }
 @media only screen and (min-width: 1170px) {
@@ -456,6 +514,18 @@ xfilter
   .cd-filter form {
     padding: 70px 10%;
   }
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 14%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
+  }
 }
 
 .cd-filter-trigger {
@@ -496,6 +566,23 @@ xfilter
   }
   .cd-filter-trigger.filter-is-visible, .cd-filter-trigger.filter-is-visible:hover {
     color: #ffffff;
+  }
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 14%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
+  }
+  .stock p{
+    margin-left: 0%;
+
+    object-fit: cover;
   }
 }
 
@@ -861,6 +948,9 @@ section{
 .learn-more:active{
 	box-shadow: inset 0 2px 0 rgba(0,0,0,.8);
 }
+.stock{
+  background: #C10130;
+}
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
@@ -876,7 +966,24 @@ section{
 	ul li:nth-child(2n) .box{
 		margin-right: 0;
 		clear: right;
-	}
+  }
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 9%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
+  }
+  .stock p{
+    margin-left: -45%;
+    max-width: 979px;
+    max-height: 400px;
+  }
 }
 
 /* Small monitor */
@@ -904,7 +1011,23 @@ section{
 	}
 	.learn-more{
 		margin: 0 auto;
-	}
+  }
+  
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 9%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
+  }
+  .stock p{
+    margin-left: -30%;
+  }
 }
  
 /* Landscape phone to portrait tablet */
@@ -943,7 +1066,22 @@ section{
 	}
 	.learn-more{
 		margin: 0 auto;
-	}
+  }
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 8%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
+  }
+  .stock p{
+    margin-left: -60%;
+  }
 }
  
 /* Landscape phones and down */
@@ -1000,7 +1138,22 @@ section{
 	}
 	.hidden-desktop{
     display: block;
-	}
+  }
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 14%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
+  }
+  .stock p{
+    margin-left: -60%;
+  }
 }
 .stock p{
   width: 100%;
@@ -1100,9 +1253,24 @@ section{
   #myFooter {
       text-align: center;
   }
+  #discountpicture{
+    margin-left: -50%; 
+  }
 
   #myFooter .info{
       text-align: center;
+  }
+  #deletecard{
+    background: rgb(223, 5, 5);
+    color: white;
+    padding: 4.5px;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    width: 8%;
+    border-radius: 18px;
+    margin-left: 93%;
+    margin-bottom: -10%; 
   }
 }
 
