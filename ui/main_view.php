@@ -23,9 +23,9 @@
 					</li> 
 					<li class="filter"><a class="" href="/" data-type="all" id="selectCategories">Каталог</a></li>
 					<li class="filter" data-filter=".color-1"><a href="/laptop" data-type="color-1" id="selectLaptops" onclick="selectedLaptops()">Ноутбуки</a></li>
-					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-2" id="selectSmartphones">Смартфоны</a></li>
-					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-3" id="selectHeadset">Гарнитура</a></li>
-					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-4" id="selectMouse">Мыши</a></li>
+					<li class="filter" data-filter=".color-2"><a href="/smartphones" data-type="color-2" id="selectSmartphones">Смартфоны</a></li>
+					<li class="filter" data-filter=".color-2"><a href="/headset" data-type="color-3" id="selectHeadset">Гарнитура</a></li>
+					<li class="filter" data-filter=".color-2"><a href="/mouse" data-type="color-4" id="selectMouse">Мыши</a></li>
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->

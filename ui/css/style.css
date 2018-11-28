@@ -307,7 +307,20 @@ xgallery
   width: 100%;
   color: white;
   background: #C10130;
-  border-radius: 50px;
+  border-radius: 20px;
+}
+
+.cd-gallery #cartimg{
+  border: 3px solid white;
+  padding: 15px;
+  width: 100%;
+  color: white;
+  background: rgb(16, 73, 4);
+  border-radius: 20px;
+
+}
+#cartimg:hover{
+  background: rgb(37, 158, 13);
 }
 
 .cd-gallery .productname{
@@ -330,6 +343,7 @@ xgallery
   border: 3px solid white;
   font-weight: bold;
   border-radius: 10px;
+
 }
 
 .cd-gallery .endprice{
@@ -1168,7 +1182,7 @@ section{
 }
 
 #myFooter .row {
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 
 #myFooter .info{
