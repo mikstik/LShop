@@ -22,7 +22,12 @@
 					<a href="/">Главная</a>
 					<a href="cart">Корзина</a>
 					<a href="reg">Регистрация</a>
-					<a href="auth">Вход</a>
+					<?php if(($_SESSION['user']) !== null) :?>
+					<a href="out">Выйти</a>
+					<?php else :?>
+					<a href="auth">Вход</a>	
+					<?php endif; ?>
+					
 				</nav>
 			</div>
 		</div>

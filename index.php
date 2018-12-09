@@ -16,6 +16,52 @@ $db = new DB\SQL(
 	'root',
 	''
 );
+
+new Session();
+$db_mapper = new \DB\SQL\Mapper($db, 'users');
+$f3->route('POST /login',
+	function($f3) use($db,$db_mapper,$auth){
+		if ($f3->get('SESSION.user') === null){
+			$auth = new \Auth($db_mapper, ['id'=>'username', 'pw'=>'password']);
+			$login_result = $auth->login($f3->get('POST.username'),$f3->get('POST.password'));
+			if ($login_result = true)
+			{
+				$f3->set("SESSION.user", user);
+				$f3->reroute('/');
+				echo View::instance()->render('template_view.php');
+			}
+			else{
+				$f3->set('content','auth_view.php');
+				echo View::instance()->render('template_view.php');
+			}
+		}
+		else{
+			$f3->reroute('/');
+			exit;
+		}
+	}
+);
+
+$f3->route('POST /registration',
+	function($f3) use($db){
+		if ($f3->get('SESSION.user') == null){
+			if($f3->get('POST.password') == $f3->get('POST.pass')){
+				$f3->set("SESSION.user", user);
+				$f3->set('regist', $db->exec('INSERT INTO users(username,password,name) VALUES (?,?,?)',
+				array (1=>$f3->get('POST.username'), 2=> $f3->get('POST.password'), 3=> $f3->get('POST.name'))));
+				$f3->reroute('/');
+			}
+			else{
+				// echo ('POST.password');
+				// echo ('POST.pass');
+				echo'<script>alert("Пароли не совпадают!");</script>';
+			}
+		}
+		else{
+			$f3->reroute('/reg');
+		}
+	}
+);
 	
 $f3->route('GET /',
 	function($f3) use($db){
@@ -92,25 +138,12 @@ $f3->route('GET /headset',
 	}
 );
 
+$f3->route('GET /out',
+	function($f3){
+		$f3->clear('SESSION.user', user);
+		$f3->reroute('/');
+	}
+);
 
-$db_mapper = new \DB\SQL\Mapper($db, 'users');
-// $f3->route('POST /login',
-// 	function($f3) use($db,$db_mapper,$auth){
-// 		$auth = new \Auth($user, array['id'=>'username', 'pw'=>'password']);
-// 		$login_result = $auth->login($f3->get('POST.username'),$f3->get('POST.password'));
-// 		var_dump($login_result);
-// 	}
-// );
-
-// $f3->route('POST /registration',
-// 	function($f3) use($db){
-// 		$f3->set('regist', $db->exec('INSERT INTO users VALUES (?, username, password, name)'));
-// 		var_dump();
-// 	}
-// );
-
-// function kek(){
-// 	echo "kjk";
-// }
 
 $f3->run();
