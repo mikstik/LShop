@@ -7,12 +7,23 @@
 </head>
     <body>
     <main class="cd-main-content">
+	
 	<section class="cd-gallery" id="cart">
+		<table>
+			<tr>
+				<th>
+					<h2 class="endprice">Очистить корзину</h3>
+				</th>
+				<th>
+					<h3 class="price">Общая стоимость: </h3>
+				</th>
+				<th>
+					<h2 class="getoffer">Оформить заказ</h3>
+				</th>
+			</tr>
+		</table>
 		<br>
 		<ul id="cards">
-			<h3 class="getoffer">Купить</h3>
-			<h3 class="price">Общая стоимость ... руб.</h3>
-			<br>
 			<?php foreach($purchapes as $item) : ?>
 				<li class="mix color-1 check1 radio1 option1">
 					<div class="linkbuttons">
@@ -26,7 +37,6 @@
 					</div>
 				</li>	
 			<?php endforeach; ?>
-			<h3 class="endprice">Очистить корзину</h3>
 	    </ul>
 		<div class="cd-fail-message">Ничего не найдено :(</div>
     </section>

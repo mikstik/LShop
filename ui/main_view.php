@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="stock">
-        <p><img src="ui/img/mainpicture.jpg" class="discount" id="discountpicture"></p>
+        <p><img src="ui/img/mainpicture.jpg" class="discount" id="discountpicture" style="margin-left:-10%;"></p>
     </div>
 	<header class="cd-header">
 		<h1>Наши продукты:</h1>

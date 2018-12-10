@@ -16,6 +16,54 @@ $db = new DB\SQL(
 	'root',
 	''
 );
+
+
+$db_mapper = new \DB\SQL\Mapper($db, 'users');
+$f3->route('POST /login',
+	function($f3) use($db,$db_mapper,$auth){
+		if ($f3->get('SESSION.user') == null){
+			$auth = new \Auth($db_mapper, ['id'=>'username', 'pw'=>'password']);
+			$login_result = $auth->login($f3->get('POST.username'),$f3->get('POST.password'));
+			if ($login_result == true)
+			{
+				new Session();
+				$f3->set("SESSION.user", user);
+				$f3->reroute('/');
+				echo View::instance()->render('template_view.php');
+			}
+			else{
+				$f3->reroute('/auth');
+				echo'<script>alert("Неправильный логин или пароль!");</script>';
+			}
+		}
+		else{
+			$f3->reroute('/');
+			exit;
+		}
+	}
+);
+
+$f3->route('POST /registration',
+	function($f3) use($db){
+		if ($f3->get('SESSION.user') == null){
+			if($f3->get('POST.password') == $f3->get('POST.pass')){
+				new Session();
+				$f3->set("SESSION.user", user);
+				$f3->set('regist', $db->exec('INSERT INTO users(username,password,name) VALUES (?,?,?)',
+				array (1=>$f3->get('POST.username'), 2=> $f3->get('POST.password'), 3=> $f3->get('POST.name'))));
+				$f3->reroute('/');
+			}
+			else{
+				// echo ('POST.password');
+				// echo ('POST.pass');
+				echo'<script>alert("Пароли не совпадают!");</script>';
+			}
+		}
+		else{
+			$f3->reroute('/reg');
+		}
+	}
+);
 	
 $f3->route('GET /',
 	function($f3) use($db){
@@ -38,7 +86,7 @@ $f3->route('GET /auth',
 $f3->route('GET /laptop',
 	function($f3) use($db){
 		$f3->set('laptops', $db->exec('SELECT * FROM product WHERE type_product="Ноутбук"'));
-		$f3->set('categories','laptops_view.php');
+		$f3->set('categories','product_view.php');
 		$f3->set('content','main_view.php');
 		$f3->set('footer','footer.php');
 		echo View::instance()->render('template_view.php');
@@ -56,7 +104,7 @@ $f3->route('GET /reg',
 $f3->route('GET /cart',
 	function($f3) use($db){
 	$f3->set('purchapes', $db->exec('SELECT * FROM product'));
-	$f3->set('content','cart_view.php');
+	$f3->set('content','cartproduct_view.php');
 	$f3->set('footer','fake_footer.php');
 	echo View::instance()->render('template_view.php');
 	}
@@ -65,7 +113,7 @@ $f3->route('GET /cart',
 $f3->route('GET /smartphones',
 	function($f3) use($db){
 		$f3->set('laptops', $db->exec('SELECT * FROM product WHERE type_product="Смартфон"'));
-		$f3->set('categories','laptops_view.php');
+		$f3->set('categories','product_view.php');
 		$f3->set('content','main_view.php');
 		$f3->set('footer','footer.php');
 		echo View::instance()->render('template_view.php');
@@ -75,7 +123,7 @@ $f3->route('GET /smartphones',
 $f3->route('GET /mouse',
 	function($f3) use($db){
 		$f3->set('laptops', $db->exec('SELECT * FROM product WHERE type_product="Мышь"'));
-		$f3->set('categories','laptops_view.php');
+		$f3->set('categories','product_view.php');
 		$f3->set('content','main_view.php');
 		$f3->set('footer','footer.php');
 		echo View::instance()->render('template_view.php');
@@ -85,43 +133,39 @@ $f3->route('GET /mouse',
 $f3->route('GET /headset',
 	function($f3) use($db){
 		$f3->set('laptops', $db->exec('SELECT * FROM product WHERE type_product="Гарнитура"'));
-		$f3->set('categories','laptops_view.php');
+		$f3->set('categories','product_view.php');
 		$f3->set('content','main_view.php');
 		$f3->set('footer','footer.php');
 		echo View::instance()->render('template_view.php');
 	}
 );
 
-
-$db_mapper = new \DB\SQL\Mapper($db, 'users');
-$f3->route('POST /login',
-	function($f3) use($db,$db_mapper,$auth){
-		$auth = new \Auth($db_mapper, ['id'=>'username', 'pw'=>'password']);
-		$login_result = $auth->login($f3->get('POST.username'),$f3->get('POST.password'));
-		if ($login_result = true)
-		{
-			new SESSION();
-			$f3->set('SESSION.test', 123);
-			$f3->reroute('/');
-			echo View::instance()->render('template_view.php');
-		}
-		else{
-			$f3->set('content','auth_view.php');
-			$f3->set('footer','footer.php');
-			echo View::instance()->render('template_view.php');
-		}
+$f3->route('GET /out',
+	function($f3){
+		$f3->clear('SESSION.user', user);
+		$f3->reroute('/');
 	}
 );
 
-$f3->route('POST /registration',
+$f3->route('GET /product/@id',
 	function($f3) use($db){
-		$f3->set('regist', $db->exec('INSERT INTO users(username,password,name) VALUES (?,?,?)',
-		array (1=>$f3->get('POST.username'), 2=> $f3->get('POST.password'), 3=> $f3->get('POST.name'))));
+	$id = $f3->get('PARAMS.id');
+	$f3->set('cartproduct', $db->exec('SELECT * FROM product WHERE id='.$id));
+	$f3->set('content','cartproduct.php');
+	$f3->set('footer','fake_footer.php');
+	echo View::instance()->render('template_view.php');
 	}
 );
 
-// function kek(){
-// 	echo "kjk";
-// }
+$f3->route('GET /addtocart/@id',
+	function($f3) use($db){
+	$id = $f3->get('PARAMS.id');
+
+	$f3->set('cartproduct', $db->exec('SELECT * FROM product WHERE id='.$id));
+	$tovars = [$id];
+	$f3->reroute('/');
+	//echo View::instance()->render('template_view.php');
+	}
+);
 
 $f3->run();
