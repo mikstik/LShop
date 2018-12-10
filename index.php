@@ -17,7 +17,6 @@ $db = new DB\SQL(
 	''
 );
 
-
 $db_mapper = new \DB\SQL\Mapper($db, 'users');
 $f3->route('POST /login',
 	function($f3) use($db,$db_mapper,$auth){
@@ -27,7 +26,7 @@ $f3->route('POST /login',
 			if ($login_result == true)
 			{
 				new Session();
-				$f3->set("SESSION.user", user);
+				$f3->set("SESSION.user", 'user');
 				$f3->reroute('/');
 				echo View::instance()->render('template_view.php');
 			}
@@ -48,7 +47,7 @@ $f3->route('POST /registration',
 		if ($f3->get('SESSION.user') == null){
 			if($f3->get('POST.password') == $f3->get('POST.pass')){
 				new Session();
-				$f3->set("SESSION.user", user);
+				$f3->set("SESSION.user", $user);
 				$f3->set('regist', $db->exec('INSERT INTO users(username,password,name) VALUES (?,?,?)',
 				array (1=>$f3->get('POST.username'), 2=> $f3->get('POST.password'), 3=> $f3->get('POST.name'))));
 				$f3->reroute('/');
@@ -103,7 +102,8 @@ $f3->route('GET /reg',
 
 $f3->route('GET /cart',
 	function($f3) use($db){
-	$f3->set('purchapes', $db->exec('SELECT * FROM product'));
+	$tovars = $f3->get('SESSION.products', $products);
+	$f3->set('purchapes', $db->exec('SELECT * FROM product WHERE id IN('.implode(',',$tovars).')'));
 	$f3->set('content','cartproduct_view.php');
 	$f3->set('footer','fake_footer.php');
 	echo View::instance()->render('template_view.php');
@@ -142,7 +142,8 @@ $f3->route('GET /headset',
 
 $f3->route('GET /out',
 	function($f3){
-		$f3->clear('SESSION.user', user);
+		$f3->clear('SESSION.user', $user);
+		$f3->clear('SESSION.products', $user);
 		$f3->reroute('/');
 	}
 );
@@ -160,11 +161,12 @@ $f3->route('GET /product/@id',
 $f3->route('GET /addtocart/@id',
 	function($f3) use($db){
 	$id = $f3->get('PARAMS.id');
-
-	$f3->set('cartproduct', $db->exec('SELECT * FROM product WHERE id='.$id));
-	$tovars = [$id];
+	$products = $f3->get('SESSION.products');
+	$products[] = $id;
+	$f3->set('SESSION.products', $products);
+	//var_dump($f3->get('SESSION.products'));
 	$f3->reroute('/');
-	//echo View::instance()->render('template_view.php');
+	echo View::instance()->render('template_view.php');
 	}
 );
 
