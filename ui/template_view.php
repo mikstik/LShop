@@ -20,7 +20,10 @@
 				<input type="checkbox" name="" id="open">
 				<nav>
 					<a href="/">Главная</a>
+					<?php if(($_SESSION['products']) !== null) :?>
 					<a href="cart">Корзина</a>
+					<?php else :?>
+					<?php endif; ?>
 					<?php if(($_SESSION['user']) !== null) :?>
 					<a href="out">Выйти</a>
 					<?php else :?>
