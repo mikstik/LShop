@@ -105,7 +105,7 @@ $f3->route('GET /cart',
 	$tovars = $f3->get('SESSION.products', $tovar);
 		if($tovars !== null){
 			$f3->set('purchapes', $db->exec('SELECT * FROM product WHERE id IN('.implode(',',$tovars).')'));
-			$f3->set('prices', $db->exec('SELECT price FROM product WHERE id IN('.implode(',',$tovars).')'));
+			$f3->set('sumprice', $db->exec('SELECT SUM(price) FROM product WHERE id IN('.implode(',',$tovars).')'));
 			$f3->set('content','cartproduct_view.php');
 			$f3->set('footer','fake_footer.php');
 			echo View::instance()->render('template_view.php');
@@ -216,12 +216,33 @@ function($f3) use($db){
 			$f3->clear('SESSION.products', $tovar);
 			$f3->reroute('/');
 		}
+		$f3->reroute('/cart');
 	}
 	else{
 		$f3->clear('SESSION.products', $tovar);
 		$f3->reroute('/');
 	}
-	$f3->reroute('/');
+	//$f3->reroute('/');
 });
+
+$f3->route('GET /buyproduct/@id',
+	function($f3) use($db){
+	$f3->clear('SESSION.products', $user);
+	$id = $f3->get('PARAMS.id');
+	$tovar = $f3->get('SESSION.products');
+	$tovar[] = $id;
+	$f3->set('SESSION.products', $tovar);
+	$f3->reroute('/cart');
+	echo View::instance()->render('template_view.php');
+	}
+);
+
+$f3->route('GET /adminpanel',
+	function($f3) use($db){
+	$f3->set('content','adminpanel.php');
+	$f3->set('footer','fake_footer.php');
+	echo View::instance()->render('template_view.php');
+	}
+);
 
 $f3->run();

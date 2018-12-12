@@ -11,7 +11,7 @@
 <header class="clearfix">
     <div class="container">
 			<div class="header-left">
-				<h1>LSHOP</h1>
+				<a href="/"><h1>LSHOP</h1></a>
 			</div>
 			<div class="header-right">
 				<label for="open">

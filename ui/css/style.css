@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: #41307c;
+  color: white;
   text-decoration: none;
 }
 
@@ -36,6 +36,7 @@ a {
 Main Components 
 
 -------------------------------- */
+
 .cd-header {
   position: relative;
   height: 150px;
@@ -850,7 +851,13 @@ header{
 	float: left;
 }
 .header-left{
-	width: 30%;
+  width: 30%;
+  text-decoration: none;
+  color:white;
+}
+.header-left {
+  text-decoration: none;
+  color:#C10130;
 }
 .header-right label{
 	position: absolute;
@@ -883,7 +890,9 @@ header{
 }
 .header-right{
 	width: 70%;
-	text-align: right;
+  text-align: right;
+  text-decoration: none;
+  color:#C10130;
 }
 #open{
 	display: none;
@@ -892,17 +901,18 @@ h1{
 	font-weight: 900;
 	line-height: 40px;
 }
-a{
+a:hover{
 	text-decoration: none;
-	color: white;
+	color:#C10130;
 }
 nav>a{
+  color: white;
 	position: relative;
 	display: inline-block;
 	font-size: 13px;
 	line-height: 40px;
 	padding: 0 2em;
-	-webkit-transition: all .3s ease;
+  -webkit-transition: all .3s ease;
 }
 nav>a:hover{
 	background: rgba(255,255,255,.9);
@@ -1305,4 +1315,62 @@ body .footer{
  flex: 1 0 auto;
  -webkit-flex: 1 0 auto;
  min-height: 200px;
+}
+
+.leftadminmenu a{
+  background: rgb(37, 37, 37);
+  color: #fff;
+  padding: 10px;
+  display: block;
+  border-bottom: 1px solid #666;  
+}
+
+.leftadminmenu{
+  float: left;
+  height: 100vh;
+}
+
+.side{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background: rgb(37, 37, 37);
+}
+
+.menu a:hover{
+  background: #3d3d3d;
+}
+
+body .adminmenu{
+  float: left;
+}
+
+#zakazi{
+  width: 75%;
+  text-align: center;  
+}
+
+#leftbar{
+  width: 25%;
+  text-align: center;
+}
+
+.orders{
+  background: rgb(37, 37, 37);
+}
+
+.orders th{
+  color: white;
+}
+
+.orders th{
+  background: rgb(37, 37, 37); 
+}
+
+.leftadminmenu .table .orders .ordersbuttons a{
+  background: white;
+  color: #fff;
+  padding: 0px;
+  display: block;
+  border-bottom: 1px solid #666;
 }
