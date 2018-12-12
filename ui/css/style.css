@@ -335,6 +335,8 @@ xgallery
   padding: 10px;
   width: 100%;
   text-align: center;
+  overflow:hidden;
+
 }
 .cd-gallery .price{
   background: #FDAF17;
@@ -1326,6 +1328,7 @@ body .footer{
 }
 
 .leftadminmenu{
+  padding: 0;
   float: left;
   height: 100vh;
 }
@@ -1348,6 +1351,7 @@ body .adminmenu{
 #zakazi{
   width: 75%;
   text-align: center;  
+  padding: 0;
 }
 
 #leftbar{
@@ -1357,6 +1361,7 @@ body .adminmenu{
 
 .orders{
   background: rgb(37, 37, 37);
+  padding: 0;
 }
 
 .orders th{
@@ -1367,10 +1372,87 @@ body .adminmenu{
   background: rgb(37, 37, 37); 
 }
 
-.leftadminmenu .table .orders .ordersbuttons a{
+#toptable{
+  padding: 0;
+}
+
+.table td, .table th{
+  border-top: none;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid rgb(187, 186, 186);
+}
+
+.crtprdct{
+  background: gray;
+}
+.productdescription{
+  padding-top: 20px;
+  padding-left: 0%;
   background: white;
-  color: #fff;
-  padding: 0px;
+  width: 75%;
+  margin: 2% auto;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+
+#imgcart{
+  max-width: 512px;
+  min-height: 512px;
+  margin: 0 auto;
+  text-align: center;
   display: block;
-  border-bottom: 1px solid #666;
+}
+
+#incart{
+  border: 2px solid black;
+  padding: 15px;
+  width: 100%;
+  color: white;
+  background: rgb(16, 73, 4);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+#alrightbuy{
+  border: 2px solid black;
+  padding: 11px;
+  width: 100%;
+  color: white;
+  background: #C10130;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 28px;
+}
+#addbuttons{
+  text-align: center;
+  margin-right: 20%;
+  margin-left: 20%;
+  margin-bottom: 0px;
+}
+#nameandtypeproduct{
+  margin-top: 15px; 
+  font-size: 36px;
+  color: #000;
+  margin-left: 5%;
+}
+#descriptionproduct{
+  margin-top: 50px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  margin-left: 5%;
+}
+
+#backtocatalog{
+  border: 2px solid black;
+  padding: 15px;
+  width: 100%;
+  color: black;
+  background: #FDAF17;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 5px;
 }

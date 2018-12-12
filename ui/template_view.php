@@ -19,6 +19,10 @@
 				</label>
 				<input type="checkbox" name="" id="open">
 				<nav>
+					<?php if($_SESSION['user'][0]['isadmin'] !== null) :?>
+					<a href="/adminpanel">Админка</a>
+					<?php else :?>
+					<?php endif;?>
 					<a href="/">Главная</a>
 					<?php if(($_SESSION['products']) !== null) :?>
 					<a href="cart">Корзина</a>

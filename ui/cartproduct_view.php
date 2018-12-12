@@ -53,17 +53,17 @@
         			</button>
       			</div>
      			<div class="modal-body">
-        		<form action="" method="POST">
+        		<form action="addorder" method="POST">
 				<h1>Введите имя:</h1>
-				<input type="text" placeholder="Александр" class="form-control">
+				<input type="text" placeholder="Александр" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name']?>">
 				<br>
 				<h1>Введите номер телефона:</h1>
-				<input type="text" placeholder="+7 (999) 999-99-99" class="form-control form-control phone bfh-phone mask-phone">
-				</form>
+				<input type="text" placeholder="+7 (999) 999-99-99" class="form-control form-control phone bfh-phone mask-phone" name="mob">
       			</div>
       			<div class="modal-footer">
-        		<button type="submit" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
-        		<a href="/addorder"><button type="button" class="btn btn-primary">Отправить</button></a>
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+        		<button type="submit" class="btn btn-primary">Отправить</button>
+				</form>
       			</div>
     		</div>
  		 </div>
