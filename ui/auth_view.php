@@ -33,13 +33,15 @@
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Пароль</span>
 						<input class="input100" type="password" name="password" placeholder="Введите пароль">
-						<span class="focus-input100"></span>
+						<span class="focus-input100"></span>	
 					</div>
+					
 					<div class="container-login100-form-btn">
 					<button class="login100-form-btn" type="submit">
 						Войти
 					</button>
 					</div>
+					
 				</form>
 			</div>
 		</div>

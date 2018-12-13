@@ -269,6 +269,7 @@ $f3->route('GET /adminpanel',
 	if ($checkadmin[0]['isadmin'] !== null){
 		$f3->set('content','adminpanel.php');
 		$f3->set('footer','fake_footer.php');
+		$f3->set('orders', $db->exec('SELECT * FROM orders'));
 		echo View::instance()->render('template_view.php');
 	}
 	else{
@@ -298,6 +299,17 @@ $f3->route('POST /addorder',
 		array (1=> $item[0][0], 
 			   2=> $id_i[0]["max(id)"])));
 		}
+		$f3->reroute('/');
+	}
+);
+
+$f3->route('GET /deleteorder/@id',
+	function($f3) use($db){
+		$id = $f3->get('PARAMS.id');
+		$f3->set('deleteorderfromorders', $db->exec("DELETE FROM orders where id='".$id."'"));
+		$tovars = $f3->get('SESSION.products', $tovar);
+		$f3->set('orderdelete', $db->exec("DELETE FROM items where ordr='".$id."'"));
+		$f3->reroute('/adminpanel');
 	}
 );
 

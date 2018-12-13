@@ -25,6 +25,7 @@
     <tr>
       <th scope="col">Номер заказа</th>
       <th scope="col">Имя заказчика</th>
+      <th scope="col">Дата</th>
       <th scope="col">Номер телефона</th>
       <th scope="col">Сумма</th>
       <th scope="col">Содержимое</th>
@@ -32,24 +33,18 @@
       <th scope="col">✖</th>
     </tr>
     <tbody>
+    <?php foreach($orders as $item) :?>
     <tr>
-      <th scope="">1</th>
-      <td>Alex</td>
-      <td>+79099729330</td>
-      <td>1000 рублей</td>
-      <td><a href="" class="ordersbutton">Просмотреть</a></td>
-      <td><a href="" class="ordersbutton">✔</a></td>
-      <td><a href="" class="ordersbutton">✖</a></td>
+      <th scope=""><?= $item['id']?></th>
+      <td><?= $item['name']?></td>
+      <td><?= $item['date']?></td>
+      <td><?= $item['mob']?></td>
+      <td><?= $item['cost']?> рублей</td>
+      <td><a href="showorder/<?= $item['id']?>" class="ordersbutton">Просмотреть</a></td>
+      <td><a href="completeorder/<?= $item['id']?>" class="ordersbutton">✔</a></td>
+      <td><a href="deleteorder/<?= $item['id']?>" class="ordersbutton">✖</a></td>
     </tr>
-    <tr>
-      <th scope="">2</th>
-      <td>Alex</td>
-      <td>+79099729330</td>
-      <td>1000 рублей</td>
-      <td><a href="" class="ordersbutton">Просмотреть</a></td>
-      <td><a href="" class="ordersbutton">✔</a></td>
-      <td><a href="" class="ordersbutton">✖</a></td>
-    </tr>
+    <?php endforeach;?>
   </tbody>
   </thead>
 </table>

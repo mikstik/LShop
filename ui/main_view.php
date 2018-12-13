@@ -111,7 +111,7 @@
 				</div> <!-- cd-filter-block -->
 			</form>
 
-			<a href="#0" class="cd-close">Close</a>
+			<a href="#0" class="cd-close">✖</a>
 		</div> <!-- cd-filter -->
 
 		<a href="#0" class="cd-filter-trigger">Фильтры</a>
